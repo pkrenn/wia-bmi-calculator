@@ -29,184 +29,180 @@ class _InputPageState extends State<InputPage> {
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Expanded(
-            child: Row(
-              children: [
-                Expanded(
-                  child: ReusableCard(
-                    onPress: () {
-                      setState(() {
-                        selectedGender = Gender.male;
-                      });
-                    },
-                    colour: selectedGender == Gender.male
-                        ? kTapCardColour
-                        : kCardColour,
-                    cardChild: cardDetails(
-                      cardIcon: FontAwesomeIcons.mars,
-                      cardText: 'MALE',
-                    ),
+          Row(
+            children: [
+              Expanded(
+                child: ReusableCard(
+                  onPress: () {
+                    setState(() {
+                      selectedGender = Gender.male;
+                    });
+                  },
+                  colour: selectedGender == Gender.male
+                      ? kTapCardColour
+                      : kCardColour,
+                  cardChild: cardDetails(
+                    cardIcon: FontAwesomeIcons.mars,
+                    cardText: 'MALE',
                   ),
                 ),
-                Expanded(
-                  child: ReusableCard(
-                    onPress: () {
-                      setState(() {
-                        selectedGender = Gender.female;
-                      });
-                    },
-                    colour: selectedGender == Gender.female
-                        ? kTapCardColour
-                        : kCardColour,
-                    cardChild: cardDetails(
-                      cardIcon: FontAwesomeIcons.venus,
-                      cardText: 'FEMALE',
-                    ),
+              ),
+              Expanded(
+                child: ReusableCard(
+                  onPress: () {
+                    setState(() {
+                      selectedGender = Gender.female;
+                    });
+                  },
+                  colour: selectedGender == Gender.female
+                      ? kTapCardColour
+                      : kCardColour,
+                  cardChild: cardDetails(
+                    cardIcon: FontAwesomeIcons.venus,
+                    cardText: 'FEMALE',
                   ),
+                ),
+              )
+            ],
+          ),
+          ReusableCard(
+            cardChild: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Height',
+                  style: kLabelStyle,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.baseline,
+                  textBaseline: TextBaseline.alphabetic,
+                  children: [
+                    Text(
+                      height.toString(),
+                      style: kNumberStyle,
+                    ),
+                    Text(
+                      'cm',
+                      style: kLabelStyle,
+                    )
+                  ],
+                ),
+                SliderTheme(
+                  data: SliderTheme.of(context).copyWith(
+                    activeTrackColor: Colors.white,
+                    inactiveTrackColor: Color(0xFF8D8E98),
+                    thumbColor: Color(0xFFEB1555),
+                    overlayColor: Color(0x29EB1555),
+                    thumbShape:
+                        RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                    overlayShape:
+                        RoundSliderOverlayShape(overlayRadius: 30.0),
+                  ),
+                  child: Slider(
+                      value: height.toDouble(),
+                      max: 220,
+                      min: 120,
+                      onChanged: (double newHeight) {
+                        setState(() {
+                          height = newHeight.round();
+                        });
+                      }),
                 )
               ],
             ),
+            colour: kCardColour,
           ),
-          Expanded(
-            child: ReusableCard(
-              cardChild: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Height',
-                    style: kLabelStyle,
-                  ),
-                  Row(
+          Row(
+            children: [
+              Expanded(
+                child: ReusableCard(
+                  cardChild: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.baseline,
-                    textBaseline: TextBaseline.alphabetic,
                     children: [
                       Text(
-                        height.toString(),
-                        style: kNumberStyle,
+                        'WEIGHT',
+                        style: kLabelStyle,
                       ),
                       Text(
-                        'cm',
-                        style: kLabelStyle,
+                        weight.toString(),
+                        style: kNumberStyle,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          RoundIconButton(
+                            icon: FontAwesomeIcons.minus,
+                            onPressed: () {
+                              setState(() {
+                                weight--;
+                              });
+                            },
+                          ),
+                          SizedBox(
+                            width: 15.0,
+                          ),
+                          RoundIconButton(
+                            icon: FontAwesomeIcons.plus,
+                            onPressed: () {
+                              setState(() {
+                                weight++;
+                              });
+                            },
+                          ),
+                        ],
                       )
                     ],
                   ),
-                  SliderTheme(
-                    data: SliderTheme.of(context).copyWith(
-                      activeTrackColor: Colors.white,
-                      inactiveTrackColor: Color(0xFF8D8E98),
-                      thumbColor: Color(0xFFEB1555),
-                      overlayColor: Color(0x29EB1555),
-                      thumbShape:
-                          RoundSliderThumbShape(enabledThumbRadius: 15.0),
-                      overlayShape:
-                          RoundSliderOverlayShape(overlayRadius: 30.0),
-                    ),
-                    child: Slider(
-                        value: height.toDouble(),
-                        max: 220,
-                        min: 120,
-                        onChanged: (double newHeight) {
-                          setState(() {
-                            height = newHeight.round();
-                          });
-                        }),
-                  )
-                ],
-              ),
-              colour: kCardColour,
-            ),
-          ),
-          Expanded(
-            child: Row(
-              children: [
-                Expanded(
-                  child: ReusableCard(
-                    cardChild: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'WEIGHT',
-                          style: kLabelStyle,
-                        ),
-                        Text(
-                          weight.toString(),
-                          style: kNumberStyle,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            RoundIconButton(
-                              icon: FontAwesomeIcons.minus,
-                              onPressed: () {
-                                setState(() {
-                                  weight--;
-                                });
-                              },
-                            ),
-                            SizedBox(
-                              width: 15.0,
-                            ),
-                            RoundIconButton(
-                              icon: FontAwesomeIcons.plus,
-                              onPressed: () {
-                                setState(() {
-                                  weight++;
-                                });
-                              },
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                    colour: kCardColour,
-                  ),
+                  colour: kCardColour,
                 ),
-                Expanded(
-                  child: ReusableCard(
-                    cardChild: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'AGE',
-                          style: kLabelStyle,
-                        ),
-                        Text(
-                          age.toString(),
-                          style: kNumberStyle,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            RoundIconButton(
-                              icon: FontAwesomeIcons.minus,
-                              onPressed: () {
-                                setState(() {
-                                  age--;
-                                });
-                              },
-                            ),
-                            SizedBox(
-                              width: 15.0,
-                            ),
-                            RoundIconButton(
-                              icon: FontAwesomeIcons.plus,
-                              onPressed: () {
-                                setState(() {
-                                  age++;
-                                });
-                              },
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                    colour: kCardColour,
+              ),
+              Expanded(
+                child: ReusableCard(
+                  cardChild: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'AGE',
+                        style: kLabelStyle,
+                      ),
+                      Text(
+                        age.toString(),
+                        style: kNumberStyle,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          RoundIconButton(
+                            icon: FontAwesomeIcons.minus,
+                            onPressed: () {
+                              setState(() {
+                                age--;
+                              });
+                            },
+                          ),
+                          SizedBox(
+                            width: 15.0,
+                          ),
+                          RoundIconButton(
+                            icon: FontAwesomeIcons.plus,
+                            onPressed: () {
+                              setState(() {
+                                age++;
+                              });
+                            },
+                          ),
+                        ],
+                      )
+                    ],
                   ),
-                )
-              ],
-            ),
+                  colour: kCardColour,
+                ),
+              )
+            ],
           ),
           BottomButton(
             onTap: () {
