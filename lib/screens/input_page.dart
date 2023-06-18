@@ -18,10 +18,6 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  Gender selectedGender;
-  int height = 180;
-  int weight = 60;
-  int age = 20;
 
   @override
   Widget build(BuildContext context) {
@@ -31,17 +27,18 @@ class _InputPageState extends State<InputPage> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          Center(
+              child: Text("Hello World! BMI Calculator")
+          ),
           BottomButton(
             onTap: () {
-              CalculatorBrain calc =
-                  CalculatorBrain(height: height, weight: weight);
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => ResultsPage(
-                    bmiResult: calc.calculateBMI(),
-                    interpretation: calc.getInterpretation(),
-                    resultText: calc.getResult(),
+                    bmiResult: "18.5",
+                    interpretation: "You have a normal body weight. Good job!",
+                    resultText: "Normal",
                   ),
                 ),
               );
