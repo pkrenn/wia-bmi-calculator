@@ -45,7 +45,7 @@ class _InputPageState extends State<InputPage> {
                       ? kTapCardColour
                       : kCardColour,
                   cardChild: cardDetails(
-                    cardIcon: FontAwesomeIcons.mars,
+                    cardIcon: Icons.male,
                     cardText: 'MALE',
                   ),
                 ),
@@ -61,7 +61,7 @@ class _InputPageState extends State<InputPage> {
                       ? kTapCardColour
                       : kCardColour,
                   cardChild: cardDetails(
-                    cardIcon: FontAwesomeIcons.venus,
+                    cardIcon: Icons.female,
                     cardText: 'FEMALE',
                   ),
                 ),
