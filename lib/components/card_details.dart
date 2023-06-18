@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 
 class cardDetails extends StatelessWidget {
-  cardDetails({this.cardIcon, this.cardText});
+  cardDetails({required this.cardIcon, required this.cardText});
 
   final IconData cardIcon;
   final String cardText;
