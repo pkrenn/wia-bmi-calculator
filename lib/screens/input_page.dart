@@ -31,27 +31,6 @@ class _InputPageState extends State<InputPage> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
-            children: [
-              Expanded(
-                child: Placeholder(),
-              ),
-              Expanded(
-                child: Placeholder(),
-              )
-            ],
-          ),
-          Placeholder(),
-          Row(
-            children: [
-              Expanded(
-                child: Placeholder(),
-              ),
-              Expanded(
-                child: Placeholder(),
-              )
-            ],
-          ),
           BottomButton(
             onTap: () {
               CalculatorBrain calc =
