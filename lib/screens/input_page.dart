@@ -30,11 +30,7 @@ class _InputPageState extends State<InputPage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ResultsPage(
-                    bmiResult: "18.5",
-                    interpretation: "You have a normal body weight. Good job!",
-                    resultText: "Normal",
-                  ),
+                  builder: (context) => ResultsPage(),
                 ),
               );
             },
