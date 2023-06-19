@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../constants.dart';
 
-class cardDetails extends StatelessWidget {
-  cardDetails({required this.cardIcon, required this.cardText});
+class CardDetails extends StatelessWidget {
+  CardDetails({required this.cardIcon, required this.cardText});
 
   final IconData cardIcon;
   final String cardText;
